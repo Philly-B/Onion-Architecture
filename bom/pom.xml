@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>bom</artifactId>
 	<packaging>pom</packaging>
-	<name>${artifactId}</name>
+	<name>${project.artifactId}</name>
 
 
 	<dependencyManagement>

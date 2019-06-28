@@ -9,7 +9,7 @@
   <artifactId>inner-reactor</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
-  <name>${artifactId}</name>
+  <name>${project.artifactId}</name>
   <modules>
   	<module>domain</module>
   	<module>infrastructure-interfaces</module>

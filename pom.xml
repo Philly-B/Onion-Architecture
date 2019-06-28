@@ -6,7 +6,7 @@
 	<artifactId>reactor</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>${artifactId}</name>
+	<name>${project.artifactId}</name>
 	<modules>
 		<module>inner-reactor</module>
 		<module>components-reactor</module>
