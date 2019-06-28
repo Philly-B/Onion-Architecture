@@ -1,21 +1,21 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>de.test.onion</groupId>
-    <artifactId>reactor</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <groupId>de.test.onion</groupId>
-  <artifactId>inner-reactor</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>pom</packaging>
-  <name>${project.artifactId}</name>
-  <modules>
-  	<module>domain</module>
-  	<module>infrastructure-interfaces</module>
-  	<module>service-interfaces</module>
-  	<module>repository-interface</module>
-  	<module>utils</module>
-  	<module>repository-interfaces</module>
-  </modules>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>de.test.onion</groupId>
+		<artifactId>reactor</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>inner-reactor</artifactId>
+	<packaging>pom</packaging>
+	<name>${project.artifactId}</name>
+	<modules>
+		<module>domain</module>
+		<module>infrastructure-interfaces</module>
+		<module>service-interfaces</module>
+		<module>repository-interface</module>
+		<module>utils</module>
+		<module>repository-interfaces</module>
+	</modules>
 </project>
