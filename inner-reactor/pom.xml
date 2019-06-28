@@ -14,8 +14,7 @@
 		<module>domain</module>
 		<module>infrastructure-interfaces</module>
 		<module>service-interfaces</module>
-		<module>repository-interface</module>
-		<module>utils</module>
 		<module>repository-interfaces</module>
+		<module>utils</module>
 	</modules>
 </project>
