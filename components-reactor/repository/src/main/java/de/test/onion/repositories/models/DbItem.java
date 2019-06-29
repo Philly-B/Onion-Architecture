@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class DbItem {
 
 	@Id
-	private Long id;
+	private String id;
 	private String name;
 	private double value;
 

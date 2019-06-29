@@ -28,7 +28,7 @@ public class BucketRepositoryImplTest extends AbstractCommonTest {
 	private final DbBucketConnector dbBucketConnector = this.createMock(DbBucketConnector.class);
 	private final BucketMapper bucketMapper = this.createMock(BucketMapper.class);
 
-	private final DbBucketMother dB_BucketMother = this.createMother(DbBucketMother.class);
+	private final DbBucketMother dbBucketMother = this.createMother(DbBucketMother.class);
 	private final BucketMother bucketMother = this.createMother(BucketMother.class);
 
 	@Override
@@ -41,9 +41,9 @@ public class BucketRepositoryImplTest extends AbstractCommonTest {
 	@Test
 	public void testFindAll() {
 
-		DbBucket dbBucket1 = dB_BucketMother.generate(DB_BUCKET_NAME.GERMANY);
+		DbBucket dbBucket1 = dbBucketMother.generate(DB_BUCKET_NAME.GERMANY);
 		Bucket bucket1 = bucketMother.generate(BUCKET_NAME.GERMANY);
-		DbBucket dbBucket2 = dB_BucketMother.generate(DB_BUCKET_NAME.USA);
+		DbBucket dbBucket2 = dbBucketMother.generate(DB_BUCKET_NAME.USA);
 		Bucket bucket2 = bucketMother.generate(BUCKET_NAME.USA);
 		Iterable<DbBucket> iterableResult = IterableHelper.convertToIterable(dbBucket1, dbBucket2);
 		expect(dbBucketConnector.findAll()).andReturn(iterableResult);
@@ -78,7 +78,7 @@ public class BucketRepositoryImplTest extends AbstractCommonTest {
 	@Test
 	public void testSave() {
 		Bucket bucket = bucketMother.generate(BUCKET_NAME.GERMANY);
-		DbBucket dbBucket = dB_BucketMother.generate(DB_BUCKET_NAME.GERMANY);
+		DbBucket dbBucket = dbBucketMother.generate(DB_BUCKET_NAME.GERMANY);
 
 		expect(bucketMapper.mapToDB_Bucket(bucket)).andReturn(dbBucket);
 		expect(dbBucketConnector.save(dbBucket)).andReturn(dbBucket);

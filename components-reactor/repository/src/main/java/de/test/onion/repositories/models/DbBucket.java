@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class DbBucket {
 
 	@Id
-	private Long id;
+	private String id;
 	private String name;
 	private List<DbItem> items;
 

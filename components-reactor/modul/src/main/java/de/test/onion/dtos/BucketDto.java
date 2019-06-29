@@ -1,4 +1,6 @@
-package de.test.onion.domain;
+package de.test.onion.dtos;
+
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +9,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class BucketDto {
 
 	private String id;
 	private String name;
-	private double value;
+	private List<ItemDto> items;
 
 }

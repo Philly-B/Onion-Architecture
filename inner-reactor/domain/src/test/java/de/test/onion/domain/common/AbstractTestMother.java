@@ -21,8 +21,8 @@ public abstract class AbstractTestMother<T extends TestMotherName, O> implements
 
 	protected abstract O generateTheObject(T enumOfMother);
 
-	protected long getNextId() {
-		return idCounter.incrementAndGet();
+	protected String getNextId() {
+		return Long.toString(idCounter.incrementAndGet());
 	}
 
 	@Override

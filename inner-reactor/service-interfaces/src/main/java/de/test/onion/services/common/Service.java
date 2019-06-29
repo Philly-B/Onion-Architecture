@@ -1,4 +1,4 @@
-package de.test.onion.domain.common;
+package de.test.onion.services.common;
 
 import org.springframework.stereotype.Component;
 

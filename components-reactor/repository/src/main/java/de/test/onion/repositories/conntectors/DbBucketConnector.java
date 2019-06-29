@@ -6,6 +6,6 @@ import de.test.onion.repositories.common.DBConnector;
 import de.test.onion.repositories.models.DbBucket;
 
 @DBConnector
-public interface DbBucketConnector extends PagingAndSortingRepository<DbBucket, Long> {
+public interface DbBucketConnector extends PagingAndSortingRepository<DbBucket, String> {
 	// mainly auto generated
 }

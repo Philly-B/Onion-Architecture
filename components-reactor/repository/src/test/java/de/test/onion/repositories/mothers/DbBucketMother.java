@@ -16,7 +16,7 @@ public class DbBucketMother extends AbstractTestMother<DB_BUCKET_NAME, DbBucket>
 		GERMANY, USA
 	};
 
-	private final DbItemMother db_ItemsMother = new DbItemMother();
+	private final DbItemMother dbItemsMother = new DbItemMother();
 
 	@Override
 	protected DbBucket generateTheObject(DB_BUCKET_NAME enumOfMother) {
@@ -37,7 +37,7 @@ public class DbBucketMother extends AbstractTestMother<DB_BUCKET_NAME, DbBucket>
 	}
 
 	private DbItem generateDb_Item(DB_ITEM_NAME itemName) {
-		return db_ItemsMother.generate(itemName);
+		return dbItemsMother.generate(itemName);
 	}
 
 }

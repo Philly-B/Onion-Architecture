@@ -1,7 +1,5 @@
 package de.test.onion.domain.mothers;
 
-import java.util.concurrent.atomic.AtomicLong;
-
 import de.test.onion.domain.Item;
 import de.test.onion.domain.common.AbstractTestMother;
 import de.test.onion.domain.common.TestMotherName;
@@ -12,8 +10,6 @@ public class ItemMother extends AbstractTestMother<ITEM_NAME, Item> {
 	public enum ITEM_NAME implements TestMotherName {
 		BERLIN, HAMBURG, NEW_YORK, LOS_ANGELES, SEATTLE
 	};
-
-	private final AtomicLong idCounter = new AtomicLong(0);
 
 	@Override
 	protected Item generateTheObject(ITEM_NAME dbItemsName) {
@@ -34,7 +30,7 @@ public class ItemMother extends AbstractTestMother<ITEM_NAME, Item> {
 	}
 
 	private Item generateDB_Item(ITEM_NAME dbItemsName, double value) {
-		return new Item(idCounter.getAndIncrement(), dbItemsName.toString().toLowerCase(), value);
+		return new Item(getNextId(), dbItemsName.toString().toLowerCase(), value);
 	}
 
 }

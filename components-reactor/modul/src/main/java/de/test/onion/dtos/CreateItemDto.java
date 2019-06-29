@@ -1,4 +1,4 @@
-package de.test.onion.domain;
+package de.test.onion.dtos;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Item {
+public class CreateItemDto {
 
-	private String id;
 	private String name;
 	private double value;
 
