@@ -2,8 +2,10 @@ package de.test.onion.repositories.conntectors;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import de.test.onion.repositories.models.DB_Bucket;
+import de.test.onion.repositories.common.DBConnector;
+import de.test.onion.repositories.models.DbBucket;
 
-public interface DbBucketConnector extends PagingAndSortingRepository<DB_Bucket, Long> {
+@DBConnector
+public interface DbBucketConnector extends PagingAndSortingRepository<DbBucket, Long> {
 	// mainly auto generated
 }

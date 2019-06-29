@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DB_Bucket {
+public class DbBucket {
 
 	@Id
 	private Long id;
 	private String name;
-	private List<DB_Item> items;
+	private List<DbItem> items;
 
 }

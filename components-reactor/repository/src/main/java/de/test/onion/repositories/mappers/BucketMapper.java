@@ -4,39 +4,32 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import de.test.onion.domain.Bucket;
 import de.test.onion.domain.Item;
-import de.test.onion.repositories.models.DB_Bucket;
-import de.test.onion.repositories.models.DB_Item;
+import de.test.onion.domain.common.Mapper;
+import de.test.onion.repositories.models.DbBucket;
+import de.test.onion.repositories.models.DbItem;
 
-@Component
+@Mapper
 public class BucketMapper {
 
 	@Autowired
 	private ItemMapper itemMapper;
 
+	public DbBucket mapToDB_Bucket(Bucket bucket) {
 
-	public DB_Bucket mapToDB_Bucket(Bucket bucket) {
-
-		List<DB_Item> db_items = bucket.getItems()
-				.stream()
-				.map(this.itemMapper::mapToDB_Item)
+		List<DbItem> db_items = bucket.getItems().stream().map(this.itemMapper::mapToDbItem)
 				.collect(Collectors.toList());
 
-		return new DB_Bucket(bucket.getId(), bucket.getName(), db_items);
+		return new DbBucket(bucket.getId(), bucket.getName(), db_items);
 	}
 
+	public Bucket mapToBucket(DbBucket dbBucket) {
 
-	public Bucket mapToBucket(DB_Bucket db_bucket) {
+		List<Item> items = dbBucket.getItems().stream().map(this.itemMapper::mapToItem).collect(Collectors.toList());
 
-		List<Item> items = db_bucket.getItems()
-				.stream()
-				.map(this.itemMapper::mapToItem)
-				.collect(Collectors.toList());
-
-		return new Bucket(db_bucket.getId(), db_bucket.getName(), items);
+		return new Bucket(dbBucket.getId(), dbBucket.getName(), items);
 	}
 
 }

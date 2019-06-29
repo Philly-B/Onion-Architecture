@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DB_Item {
+public class DbItem {
 
 	@Id
 	private Long id;

@@ -8,4 +8,6 @@ public interface BucketRepository {
 
 	List<Bucket> findAll();
 
+	Bucket save(Bucket bucket);
+
 }
