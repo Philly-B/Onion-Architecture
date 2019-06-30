@@ -28,6 +28,7 @@ public class BucketFacade {
 		return bucketService.getAll().stream().map(bucketDtoMapper::mapToBucketDto).collect(Collectors.toList());
 	}
 
+	@Transactional
 	public BucketDto update(String id, BucketDto bucketDto) {
 		assertSameId(id, bucketDto);
 		Bucket bucket = bucketDtoMapper.mapToBucket(bucketDto);
@@ -41,6 +42,7 @@ public class BucketFacade {
 
 	}
 
+	@Transactional
 	public BucketDto createBucket(CreateBucketDto bucketDto) {
 
 		Bucket bucket = bucketDtoMapper.mapToBucket(bucketDto);
@@ -50,6 +52,11 @@ public class BucketFacade {
 	private BucketDto saveBucket(Bucket bucket) {
 		Bucket savedBucket = bucketService.saveBucket(bucket);
 		return bucketDtoMapper.mapToBucketDto(savedBucket);
+	}
+
+	@Transactional
+	public void delete(String bucketId) {
+		bucketService.delete(bucketId);
 	}
 
 }

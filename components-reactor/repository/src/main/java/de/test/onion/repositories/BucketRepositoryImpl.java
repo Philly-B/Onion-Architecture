@@ -35,4 +35,9 @@ public class BucketRepositoryImpl implements BucketRepository {
 		return this.bucketMapper.mapToBucket(savedDBBucket);
 	}
 
+	@Override
+	public void delete(String bucketId) {
+		dbBucketConnector.findById(bucketId).ifPresent(dbBucketConnector::delete);
+	}
+
 }

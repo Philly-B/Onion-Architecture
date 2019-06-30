@@ -29,4 +29,9 @@ public class BucketServiceImpl implements BucketService {
 		return bucketRepository.save(bucket);
 	}
 
+	@Override
+	public void delete(String bucketId) {
+		bucketRepository.delete(bucketId);
+	}
+
 }

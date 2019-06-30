@@ -10,4 +10,6 @@ public interface BucketRepository {
 
 	Bucket save(Bucket bucket);
 
+	void delete(String bucketId);
+
 }

@@ -20,7 +20,7 @@ public class BucketDtoMapper {
 	private final ItemDtoMapper itemDtoMapper;
 
 	public Bucket mapToBucket(BucketDto bucketDto) {
-
+		// TODO the list of the dto could be null
 		List<Item> items = bucketDto.getItems().stream().map(itemDtoMapper::mapToItem).collect(Collectors.toList());
 
 		return new Bucket(bucketDto.getId(), bucketDto.getName(), items);
