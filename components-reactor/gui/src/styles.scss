@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+footer {
+  padding: 4rem 16rem;
+  color: #ffffff;
+  background: #435eb0;
+  margin-top: 2rem;
+  position: sticky;
+  top: 100%;
+
+}
+
+.footer,
+.push {
+  height: 50px;
+}
+
+
+.footer-xs {
+  text-align: center;
+  padding-top: 1rem;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+.content {
+  min-height: 100%;
+}
+.content-inside {
+  padding: 20px;
+  padding-bottom: 50px;
+}
