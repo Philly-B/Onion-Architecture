@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-bucket-overview',
@@ -7,7 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BucketOverviewComponent implements OnInit {
 
-  constructor() { }
+  faEdit = faEdit;
+  fas = fas;
+
+  constructor() {
+
+  }
 
   ngOnInit() {
   }
