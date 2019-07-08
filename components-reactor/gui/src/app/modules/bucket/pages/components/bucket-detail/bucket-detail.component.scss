@@ -1,3 +1,33 @@
-.bucket-card {
-  max-height: 100px;
+@import '../../../bucket.common.scss';
+.item-list {
+    margin-left: 20px;
+}
+
+.item-add {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.mat-card-title:hover {
+    font-weight: bold;
+}
+
+.mat-column {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item-container {
+    border-width: 2px;
+    border-style: solid;
+    border-color: azure;
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+}
+
+table th {
+    font-size: 1.2rem;
 }

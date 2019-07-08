@@ -8,20 +8,33 @@ import { Item } from '../model/item.model';
 })
 export class BucketService {
 
+  private items: Item[] = [
+    new Item({ id: '54', name: 'First item', value: 12.4 }),
+    new Item({ id: '58', name: 'Second item', value: 153.4 })
+  ];
+
+  private buckets: Bucket[] = [
+    new Bucket({ id: '12', name: 'Bla' }),
+    new Bucket({ id: '15', name: 'Blub', items: this.items }),
+    new Bucket({ id: '17', name: 'Blob' })
+  ];
+
+
+  updateBucket(bucket: Bucket) {
+    console.log('Deleting bucket', bucket);
+    const index = this.buckets.findIndex(b => bucket.id === b.id );
+    this.buckets[index] = bucket;
+  }
+
+  deleteBucket(bucket: Bucket) {
+    console.log('Deleting bucket', bucket);
+    this.buckets.splice(this.buckets.indexOf(bucket), 1);
+    console.log(this.buckets);
+  }
+
   constructor() { }
 
   getBuckets(): Observable<Bucket[]> {
-
-    var items: Item[] = [
-      new Item({ id: '54', name: 'First item', value: 12.4 }),
-      new Item({ id: '58', name: 'Second item', value: 153.4 })
-    ];
-
-    var buckets: Bucket[] = [
-      new Bucket({ id: '12', name: 'Bla' }),
-      new Bucket({ id: '15', name: 'Blub', items: items }),
-      new Bucket({ id: '17', name: 'Blob' })
-    ];
-    return of(buckets);
+    return of(this.buckets);
   }
 }

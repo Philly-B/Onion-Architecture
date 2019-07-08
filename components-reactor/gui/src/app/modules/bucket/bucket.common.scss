@@ -1,0 +1,23 @@
+.bucket-card {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    background: #308548;
+}
+
+.bucket-card .opened {
+    max-height: 100px;
+}
+
+.bucket-card .closed {
+    max-height: 300px;
+}
+
+.icon {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.icon-container {
+    float: right;
+    overflow: auto;
+}

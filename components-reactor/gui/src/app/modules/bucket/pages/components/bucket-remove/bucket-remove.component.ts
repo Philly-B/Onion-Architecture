@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Bucket } from '../../../model/bucket.model';
+import { BucketService } from '../../../services/bucket.service';
 
 @Component({
   selector: 'app-bucket-remove',
@@ -9,10 +11,16 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class BucketRemoveComponent implements OnInit {
 
   faTrash = faTrash;
+  @Input() bucket: Bucket;
 
-  constructor() { }
+  constructor(private bucketService: BucketService) { }
 
   ngOnInit() {
+  }
+
+  execute() {
+    console.log('remvoe');
+    this.bucketService.deleteBucket(this.bucket);
   }
 
 }
