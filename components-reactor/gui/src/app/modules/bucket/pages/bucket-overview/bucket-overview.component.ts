@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit, Input } from '@angular/core';
+import { BucketService } from '../../services/bucket.service';
+import { Bucket } from '../../model/bucket.model';
+import { Observable } from 'rxjs';
+import { defaultIfEmpty, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bucket-overview',
@@ -9,14 +11,15 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 })
 export class BucketOverviewComponent implements OnInit {
 
-  faEdit = faEdit;
-  fas = fas;
+  buckets$: Observable<Bucket[]>;
 
-  constructor() {
+  constructor(private bucketService: BucketService) {
 
   }
 
   ngOnInit() {
+
+    this.buckets$ = this.bucketService.getBuckets();
   }
 
 }

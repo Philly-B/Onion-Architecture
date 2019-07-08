@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-bucket-remove',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bucket-remove.component.scss']
 })
 export class BucketRemoveComponent implements OnInit {
+
+  faTrash = faTrash;
 
   constructor() { }
 

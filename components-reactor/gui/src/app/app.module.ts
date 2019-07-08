@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { BucketModule } from './modules/bucket/bucket.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -13,7 +12,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     HomeComponent
   ],
   imports: [
