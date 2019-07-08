@@ -1,0 +1,10 @@
+<mat-card class="bucket-card" *ngIf="bucket">
+  <mat-card-header>
+    <mat-card-title>{{bucket.name}}</mat-card-title>
+    <app-bucket-edit></app-bucket-edit>
+    <app-bucket-remove></app-bucket-remove>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-card-subtitle>The bucket contains {{bucket.items?.length || '0' }} item(s).</mat-card-subtitle>
+  </mat-card-content>
+</mat-card>

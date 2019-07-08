@@ -1,0 +1,5 @@
+<div class="container" *ngIf="buckets$ | async as buckets; else loading">
+  <ng-container *ngFor="let bucket of buckets">
+    <app-bucket-detail [bucket]="bucket"></app-bucket-detail>
+  </ng-container>
+</div>
