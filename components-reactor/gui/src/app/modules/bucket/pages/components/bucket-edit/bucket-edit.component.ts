@@ -16,7 +16,7 @@ export class BucketEditComponent implements OnInit {
   @Input() bucket: Bucket;
 
   constructor(private bucketService: BucketService,
-              private modalDialog: MatDialog) { }
+    private modalDialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -29,18 +29,19 @@ export class BucketEditComponent implements OnInit {
 
     this.modalDialog.open(BucketEditModalComponent, {
       width: '250px',
-      data: Object.assign({}, this.bucket)
+      data: {
+        bucket: Object.assign({}, this.bucket),
+        titleOfModal: 'Edit Bucket'
+      }
     }).afterClosed().subscribe(result => {
       console.log('edit modal close', result);
       if (result !== undefined && result.name !== this.bucket.name) {
         this.bucket.name = result.name;
-        this.saveBucket(this.bucket);
+        this.bucketService.updateBucket(this.bucket);
       }
     });
 
   }
-  saveBucket(bucket: Bucket) {
-    this.bucketService.updateBucket(bucket);
-  }
+
 
 }

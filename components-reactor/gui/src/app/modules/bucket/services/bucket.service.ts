@@ -7,6 +7,7 @@ import { Item } from '../model/item.model';
   providedIn: 'root'
 })
 export class BucketService {
+  
 
   private items: Item[] = [
     new Item({ id: '54', name: 'First item', value: 12.4 }),
@@ -19,6 +20,10 @@ export class BucketService {
     new Bucket({ id: '17', name: 'Blob' })
   ];
 
+  createBucket(result: any) {
+    result.id = this.getRandomInt(1000);
+    this.buckets.push(result);
+  }
 
   updateBucket(bucket: Bucket) {
     console.log('Deleting bucket', bucket);
@@ -37,4 +42,9 @@ export class BucketService {
   getBuckets(): Observable<Bucket[]> {
     return of(this.buckets);
   }
+
+  private getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
 }

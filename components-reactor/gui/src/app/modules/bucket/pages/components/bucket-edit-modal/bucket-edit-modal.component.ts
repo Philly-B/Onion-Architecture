@@ -1,5 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Bucket } from '../../../model/bucket.model';
 import { FormControl } from '@angular/forms';
 
@@ -11,18 +11,28 @@ import { FormControl } from '@angular/forms';
 export class BucketEditModalComponent implements OnInit {
 
   bucket: Bucket;
+  title: string;
 
   FormControl: FormControl;
 
   constructor(
-    public dialogRef: MatDialogRef<BucketEditModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Bucket) {
+    private dialogRef: MatDialogRef<BucketEditModalComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any) {
 
-      this.bucket = data;
-    }
+    this.bucket = data.bucket;
+    this.title = data.titleOfModal;
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+
+  onEnter() {
+    this.save();
+  }
+
+  save() {
+    this.dialogRef.close(this.bucket);
   }
 
   ngOnInit() {
