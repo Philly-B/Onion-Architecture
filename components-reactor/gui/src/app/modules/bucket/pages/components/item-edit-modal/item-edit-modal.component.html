@@ -1,7 +1,8 @@
 <h1 mat-dialog-title>{{title}}</h1>
 
 <mat-form-field>
-  <input matInput (keyup.enter)="onEnter()" type="text" placeholder="Name" [(ngModel)]="bucket.name" cdkFocusInitial>
+  <input matInput type="text" required [(ngModel)]="item.name" cdkFocusInitial>
+  <input matInput type="number" required [(ngModel)]="item.value">
 </mat-form-field>
 
 <div mat-dialog-actions>

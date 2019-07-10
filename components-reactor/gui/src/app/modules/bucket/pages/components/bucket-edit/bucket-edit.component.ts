@@ -34,7 +34,6 @@ export class BucketEditComponent implements OnInit {
         titleOfModal: 'Edit Bucket'
       }
     }).afterClosed().subscribe(result => {
-      console.log('edit modal close', result);
       if (result !== undefined && result.name !== this.bucket.name) {
         this.bucket.name = result.name;
         this.bucketService.updateBucket(this.bucket);

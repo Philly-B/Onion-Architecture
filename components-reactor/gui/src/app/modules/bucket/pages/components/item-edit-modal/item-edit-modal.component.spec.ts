@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BucketAddComponent } from './bucket-add.component';
+import { ItemEditModalComponent } from './item-edit-modal.component';
 
-describe('BucketAddComponent', () => {
-  let component: BucketAddComponent;
-  let fixture: ComponentFixture<BucketAddComponent>;
+describe('ItemEditModalComponent', () => {
+  let component: ItemEditModalComponent;
+  let fixture: ComponentFixture<ItemEditModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BucketAddComponent ]
+      declarations: [ ItemEditModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BucketAddComponent);
+    fixture = TestBed.createComponent(ItemEditModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
