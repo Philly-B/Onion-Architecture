@@ -12,8 +12,8 @@ import { BucketRoutingModule } from './bucket-routing.module';
 import { BucketDetailComponent } from './pages/components/bucket-detail/bucket-detail.component';
 import { BucketEditModalComponent } from './pages/components/bucket-edit-modal/bucket-edit-modal.component';
 import { MaterialModule } from '../material-module';
-import { BucketAddComponent } from './pages/components/bucket-add/bucket-add.component';
 import { ItemAddComponent } from './pages/components/item-add/item-add.component';
+import { ItemEditModalComponent } from './pages/components/item-edit-modal/item-edit-modal.component';
 
 
 @NgModule({
@@ -24,8 +24,8 @@ import { ItemAddComponent } from './pages/components/item-add/item-add.component
     ItemRemoveComponent,
     BucketDetailComponent,
     BucketEditModalComponent,
-    BucketAddComponent,
-    ItemAddComponent],
+    ItemAddComponent,
+    ItemEditModalComponent],
   imports: [
     CommonModule,
     BucketRoutingModule,

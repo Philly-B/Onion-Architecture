@@ -4,6 +4,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class ItemService {
+  createItem(result: any): any {
+    console.log(result);
+  }
 
   constructor() { }
 }
