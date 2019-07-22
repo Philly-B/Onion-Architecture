@@ -5,6 +5,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material';
 import { BucketEditModalComponent } from '../components/bucket-edit-modal/bucket-edit-modal.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bucket-overview',
@@ -22,13 +23,9 @@ export class BucketOverviewComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.buckets = [];
     this.bucketService.getBuckets()
-      .subscribe(result => {
-        console.log(result);
-        this.buckets = result;
-      }
-      );
+      .subscribe(bs => this.buckets = bs);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -43,9 +40,11 @@ export class BucketOverviewComponent implements OnInit {
         titleOfModal: 'Create Bucket'
       }
     }).afterClosed().subscribe(result => {
-      console.log('edit modal close', result);
       if (result !== undefined) {
-        this.bucketService.createBucket(result);
+        this.bucketService.createBucket(result)
+          .subscribe(newBucket => {
+            this.buckets.push(newBucket);
+          });
       }
     });
   }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Item } from '../../../model/item.model';
 import { Bucket } from '../../../model/bucket.model';
+import { ItemService } from '../../../services/item.service';
 
 @Component({
   selector: 'app-item-remove',
@@ -14,13 +15,13 @@ export class ItemRemoveComponent implements OnInit {
   @Input() item: Item;
   @Input() bucket: Bucket;
 
-  constructor() { }
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
   }
 
   execute() {
-    console.log('Remove item', this.item);
+    this.itemService.removeItem(this.bucket, this.item);
   }
 
 }

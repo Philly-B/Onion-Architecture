@@ -34,9 +34,10 @@ export class ItemAddComponent implements OnInit {
         titleOfModal: 'Create Bucket'
       }
     }).afterClosed().subscribe(result => {
-      console.log('edit modal close', result);
+
       if (result !== undefined) {
-        this.itemService.createItem(result);
+        this.itemService.createItem(this.bucket, result)
+          .subscribe(item => this.bucket.items.push(item));
       }
     });
 

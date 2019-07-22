@@ -19,7 +19,6 @@ export class BucketRemoveComponent implements OnInit {
   }
 
   execute() {
-    console.log('remvoe');
     this.bucketService.deleteBucket(this.bucket);
   }
 

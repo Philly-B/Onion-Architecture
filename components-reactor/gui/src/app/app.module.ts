@@ -8,6 +8,8 @@ import { HeaderComponent } from './shared/header/header.component';
 import { HomeComponent } from './pages/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmationModalComponent } from './shared/confirmation-modal/confirmation-modal.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { ConfirmationModalComponent } from './shared/confirmation-modal/confirma
     BrowserModule,
     BucketModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
