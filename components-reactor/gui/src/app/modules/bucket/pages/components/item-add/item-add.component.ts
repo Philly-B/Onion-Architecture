@@ -3,8 +3,8 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Bucket } from '../../../model/bucket.model';
 import { ItemService } from '../../../services/item.service';
 import { MatDialog } from '@angular/material';
-import { BucketEditModalComponent } from '../bucket-edit-modal/bucket-edit-modal.component';
 import { Item } from '../../../model/item.model';
+import { ItemEditModalComponent } from '../item-edit-modal/item-edit-modal.component';
 
 @Component({
   selector: 'app-item-add',
@@ -27,19 +27,22 @@ export class ItemAddComponent implements OnInit {
 
   execute() {
 
-    this.modalDialog.open(BucketEditModalComponent, {
-      width: '250px',
-      data: {
-        item: new Item(),
-        titleOfModal: 'Create Bucket'
-      }
-    }).afterClosed().subscribe(result => {
+    this.modalDialog
+      .open(ItemEditModalComponent, {
+        width: '250px',
+        data: {
+          item: new Item(),
+          titleOfModal: 'Create Item'
+        }
+      })
+      .afterClosed()
+      .subscribe(result => {
 
-      if (result !== undefined) {
-        this.itemService.createItem(this.bucket, result)
-          .subscribe(item => this.bucket.items.push(item));
-      }
-    });
+        if (result !== undefined) {
+          this.itemService.createItem(this.bucket, result)
+            .subscribe(item => this.bucket.items.push(item));
+        }
+      });
 
   }
 

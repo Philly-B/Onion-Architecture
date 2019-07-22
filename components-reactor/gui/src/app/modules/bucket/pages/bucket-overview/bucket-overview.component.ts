@@ -6,6 +6,7 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material';
 import { BucketEditModalComponent } from '../components/bucket-edit-modal/bucket-edit-modal.component';
 import { Observable } from 'rxjs';
+import { NotifyService } from 'src/app/shared/notify.service';
 
 @Component({
   selector: 'app-bucket-overview',
@@ -18,7 +19,8 @@ export class BucketOverviewComponent implements OnInit {
   faPlus = faPlus;
 
   constructor(private bucketService: BucketService,
-    private modalDialog: MatDialog) {
+    private modalDialog: MatDialog,
+    private notifyService: NotifyService) {
 
   }
 
@@ -30,6 +32,21 @@ export class BucketOverviewComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.buckets, event.previousIndex, event.currentIndex);
+  }
+
+  removeBucketFromList(bucketId: string) {
+    let indexInBuckets = this.buckets.findIndex(b => b.id === bucketId);
+    if (indexInBuckets !== -1) {
+      let removedBuckets = this.buckets.splice(indexInBuckets, 1);
+      this.notifyService.showSnackBar("Bucket '" + removedBuckets[0].name + "' removed successfully.")
+    }
+  }
+
+  updateBucket(bucket: Bucket) {
+    let indexInBuckets = this.buckets.findIndex(b => b.id === bucket.id);
+    if (indexInBuckets !== -1) {
+      this.buckets[indexInBuckets] = bucket;
+    }
   }
 
   execute() {
@@ -44,6 +61,7 @@ export class BucketOverviewComponent implements OnInit {
         this.bucketService.createBucket(result)
           .subscribe(newBucket => {
             this.buckets.push(newBucket);
+            this.notifyService.showSnackBar("Bucket '" + newBucket.name + "' created successfully.")
           });
       }
     });

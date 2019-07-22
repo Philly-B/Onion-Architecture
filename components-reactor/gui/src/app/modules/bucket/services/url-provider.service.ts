@@ -11,12 +11,12 @@ export class UrlProviderService {
   private readonly BUCKETS: string = '/rest/api/buckets';
   private readonly BUCKET: string = this.BUCKETS + '/:bucketId:';
 
-  private readonly ITEMS: string = this.BUCKETS + '/items';
+  private readonly ITEMS: string = this.BUCKET + '/items';
   private readonly ITEM: string = this.ITEMS + '/:itemId:';
 
   constructor(private baseUrlService: PlatformLocation) { }
 
-  private buildUrl(url: string, bucketId?: any, itemId?: any) {
+  private buildUrl(url: string, bucketId?: string, itemId?: string) {
 
     let finalUrl = url;
 
@@ -40,7 +40,7 @@ export class UrlProviderService {
   }
 
   public getItemsUrl(bucket: Bucket): string {
-    return this.buildUrl(this.ITEMS, bucket);
+    return this.buildUrl(this.ITEMS, bucket.id);
   }
 
   public getItemUrl(bucket: Bucket, item: Item): string {

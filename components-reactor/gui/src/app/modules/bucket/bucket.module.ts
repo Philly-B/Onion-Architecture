@@ -36,7 +36,8 @@ import { ItemEditModalComponent } from './pages/components/item-edit-modal/item-
     ReactiveFormsModule
   ],
   entryComponents: [
-    BucketEditModalComponent
+    BucketEditModalComponent,
+    ItemEditModalComponent
   ]
 })
 export class BucketModule {

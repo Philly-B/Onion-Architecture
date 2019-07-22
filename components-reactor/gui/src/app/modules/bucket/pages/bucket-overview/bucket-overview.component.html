@@ -1,7 +1,8 @@
 <div class="container" *ngIf="buckets">
   <div cdkDropList class="buckets-dnd-list" (cdkDropListDropped)="drop($event)">
     <ng-container *ngFor="let bucket of buckets">
-      <app-bucket-detail [ngClass]="buckets-dnd-box" [bucket]="bucket" cdkDrag></app-bucket-detail>
+      <app-bucket-detail [ngClass]="buckets-dnd-box" [bucket]="bucket" (bucketDeleted)='removeBucketFromList($event)'
+        (bucketEdited)='updateBucket($event)' cdkDrag></app-bucket-detail>
     </ng-container>
   </div>
 </div>

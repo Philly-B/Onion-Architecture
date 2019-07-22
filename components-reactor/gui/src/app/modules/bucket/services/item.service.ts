@@ -16,11 +16,11 @@ export class ItemService {
   }
 
   updateItem(bucket: Bucket, item: Item): Observable<Item> {
-    return this.httpService.put<Item>(this.urlProvider.getItemUrl(bucket, item), item, this.httpClientConst.HTTP_OPTIONS)
+    return this.httpService.post<Item>(this.urlProvider.getItemUrl(bucket, item), item, this.httpClientConst.HTTP_OPTIONS)
   }
 
   createItem(bucket: Bucket, item: Item): Observable<Item> {
-    return this.httpService.post<Item>(this.urlProvider.getItemUrl(bucket, item), item, this.httpClientConst.HTTP_OPTIONS);
+    return this.httpService.put<Item>(this.urlProvider.getItemsUrl(bucket), item, this.httpClientConst.HTTP_OPTIONS);
   }
 
   constructor(private httpService: HttpClient,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { Bucket } from '../../../model/bucket.model';
 import { BucketService } from '../../../services/bucket.service';
@@ -14,6 +14,7 @@ export class BucketEditComponent implements OnInit {
 
   faEdit = faEdit;
   @Input() bucket: Bucket;
+  @Output() bucketEditEvent: EventEmitter<Bucket> = new EventEmitter<Bucket>();
 
   constructor(private bucketService: BucketService,
     private modalDialog: MatDialog) { }
@@ -36,7 +37,8 @@ export class BucketEditComponent implements OnInit {
     }).afterClosed().subscribe(result => {
       if (result !== undefined && result.name !== this.bucket.name) {
         this.bucket.name = result.name;
-        this.bucketService.updateBucket(this.bucket);
+        this.bucketService.updateBucket(this.bucket)
+          .subscribe(this.bucketEditEvent.emit);
       }
     });
 

@@ -23,8 +23,8 @@ export class BucketService {
     return this.httpService.post<Bucket>(this.urlProvider.getBucketUrl(bucket), bucket, this.httpClientConst.HTTP_OPTIONS);
   }
 
-  deleteBucket(bucket: Bucket) {
-    return this.httpService.delete(this.urlProvider.getBucketUrl(bucket));
+  deleteBucket(bucket: Bucket): Observable<Bucket> {
+    return this.httpService.delete<Bucket>(this.urlProvider.getBucketUrl(bucket));
   }
 
   constructor(private httpService: HttpClient,
