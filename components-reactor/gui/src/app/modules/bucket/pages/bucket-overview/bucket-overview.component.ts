@@ -18,7 +18,8 @@ export class BucketOverviewComponent implements OnInit {
   buckets: Bucket[];
   faPlus = faPlus;
 
-  constructor(private bucketService: BucketService,
+  constructor(
+    private bucketService: BucketService,
     private modalDialog: MatDialog,
     private notifyService: NotifyService) {
 
@@ -35,17 +36,27 @@ export class BucketOverviewComponent implements OnInit {
   }
 
   removeBucketFromList(bucketId: string) {
-    let indexInBuckets = this.buckets.findIndex(b => b.id === bucketId);
+    const indexInBuckets = this.buckets.findIndex(b => b.id === bucketId);
     if (indexInBuckets !== -1) {
-      let removedBuckets = this.buckets.splice(indexInBuckets, 1);
+      const removedBuckets = this.buckets.splice(indexInBuckets, 1);
       this.notifyService.showSnackBar("Bucket '" + removedBuckets[0].name + "' removed successfully.")
     }
   }
 
   updateBucket(bucket: Bucket) {
-    let indexInBuckets = this.buckets.findIndex(b => b.id === bucket.id);
+    const indexInBuckets = this.buckets.findIndex(b => b.id === bucket.id);
     if (indexInBuckets !== -1) {
       this.buckets[indexInBuckets] = bucket;
+    }
+  }
+
+   createBucket = (bucket: Bucket): void => {
+    if (bucket !== undefined) {
+      this.bucketService.createBucket(bucket)
+        .subscribe(newBucket => {
+          this.buckets.push(newBucket);
+          this.notifyService.showSnackBar("Bucket '" + newBucket.name + "' created successfully.")
+        });
     }
   }
 
@@ -56,15 +67,8 @@ export class BucketOverviewComponent implements OnInit {
         bucket: new Bucket(),
         titleOfModal: 'Create Bucket'
       }
-    }).afterClosed().subscribe(result => {
-      if (result !== undefined) {
-        this.bucketService.createBucket(result)
-          .subscribe(newBucket => {
-            this.buckets.push(newBucket);
-            this.notifyService.showSnackBar("Bucket '" + newBucket.name + "' created successfully.")
-          });
-      }
-    });
+    }).afterClosed()
+    .subscribe(this.createBucket);
   }
 
 }

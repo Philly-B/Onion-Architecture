@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Bucket } from '../../../model/bucket.model';
 import { ItemService } from '../../../services/item.service';
@@ -11,18 +11,29 @@ import { ItemEditModalComponent } from '../item-edit-modal/item-edit-modal.compo
   templateUrl: './item-add.component.html',
   styleUrls: ['./item-add.component.scss']
 })
-export class ItemAddComponent implements OnInit {
+export class ItemAddComponent {
 
 
   faPlus = faPlus;
   @Input() bucket: Bucket;
+  @Output() bucketEdited: EventEmitter<Bucket> = new EventEmitter<Bucket>();
 
-  constructor(private itemService: ItemService,
+  constructor(
+    private itemService: ItemService,
     private modalDialog: MatDialog) {
-
   }
 
-  ngOnInit() {
+  private addItemToBucket = (item: Item): void => {
+
+    this.bucket.items.push(item);
+    this.bucketEdited.emit(this.bucket);
+  }
+
+  private createNewItem = (item: Item): void => {
+    if (item !== undefined) {
+      this.itemService.createItem(this.bucket, item)
+        .subscribe(this.addItemToBucket);
+    }
   }
 
   execute() {
@@ -36,13 +47,7 @@ export class ItemAddComponent implements OnInit {
         }
       })
       .afterClosed()
-      .subscribe(result => {
-
-        if (result !== undefined) {
-          this.itemService.createItem(this.bucket, result)
-            .subscribe(item => this.bucket.items.push(item));
-        }
-      });
+      .subscribe(this.createNewItem);
 
   }
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectorRef } from '@angular/core';
 import { Bucket } from '../../../model/bucket.model';
 import { Item } from '../../../model/item.model';
 import { MatTableDataSource } from '@angular/material';
@@ -16,7 +16,7 @@ export class BucketDetailComponent implements OnInit {
   showDetails: boolean;
 
   displayedColumns: string[] = ['name', 'value', 'edit', 'remove'];
-  dataSource;
+  dataSource: MatTableDataSource<Item>;
 
   constructor() {
     this.showDetails = false;
@@ -30,10 +30,13 @@ export class BucketDetailComponent implements OnInit {
     this.bucketEdited.emit(bucket);
   }
 
+  itemAddedToBucket(item: Item) {
+    this.dataSource.data = this.bucket.items;
+  }
+
   ngOnInit() {
     this.dataSource = new MatTableDataSource<Item>(this.bucket.items);
   }
-
 
   triggerShowDetails() {
     this.showDetails = !this.showDetails;

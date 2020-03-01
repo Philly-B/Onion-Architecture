@@ -23,7 +23,8 @@ export class ItemService {
     return this.httpService.put<Item>(this.urlProvider.getItemsUrl(bucket), item, this.httpClientConst.HTTP_OPTIONS);
   }
 
-  constructor(private httpService: HttpClient,
+  constructor(
+    private httpService: HttpClient,
     private urlProvider: UrlProviderService,
     private httpClientConst: HttpClientConstantsService) { }
 }
